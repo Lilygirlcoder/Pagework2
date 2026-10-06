@@ -1,0 +1,28 @@
+import random
+import time
+import uuid
+
+# Set up some plausible-sounding corporate buzzwords
+DEPARTMENTS = ["Synergy", "Quantum Growth", "Cloud Strategy", "Omnichannel", "Paradigm Realization"]
+STATUSES = ["OPTIMIZED", "DISRUPTED", "PIVOTING", "LEVERAGED", "DEPRECATED"]
+METRICS = ["Alpha_Yield", "Synergistic_Index", "Bandwidth_Utilization", "Hyper_Growth_Delta"]
+
+def generate_enterprise_bs_record():
+    return {
+        "transaction_id": str(uuid.uuid4()),
+        "timestamp": int(time.time()),
+        "department": random.choice(DEPARTMENTS),
+        "status": random.choice(STATUSES),
+        "metrics": {
+            random.choice(METRICS): round(random.uniform(10.0, 99.9), 2),
+            "roi_multiplier": f"{random.randint(2, 50)}x",
+            "is_actionable": random.choice([True, False])
+        },
+        "quantum_entropy_score": random.random()
+    }
+
+# Generate 3 random records
+bs_dataset = [generate_enterprise_bs_record() for _ in range(3)]
+
+import json
+print(json.dumps(bs_dataset, indent=2))
